@@ -1,0 +1,25 @@
+{
+  "name": "groupproject2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^3.0.6",
+    "connect-session-sequelize": "^6.0.0",
+    "cookie-parser": "^1.4.4",
+    "dotenv": "^8.1.0",
+    "ejs": "^2.6.2",
+    "express": "^4.17.1",
+    "express-session": "^1.16.2",
+    "install": "^0.13.0",
+    "npm": "^6.11.1",
+    "pg": "^7.12.1",
+    "sequelize": "^5.16.0",
+    "twilio": "^3.33.4"
+  }
+}
