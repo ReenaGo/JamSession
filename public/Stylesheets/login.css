@@ -1,0 +1,86 @@
+.bg-modal {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    opacity: 1;
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+.bg-modal1 {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    opacity: 1;
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+.modal-content {
+    width: 500px;
+    height: 400px;
+    background-color: white;
+    border-radius: 4px;
+    padding: 30px;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    top: 0;
+    right: 14px;
+    font-size: 42px;
+    transform: rotate(45deg);
+    cursor: pointer;
+}
+
+.close1 {
+    position: absolute;
+    top: 0;
+    right: 14px;
+    font-size: 42px;
+    transform: rotate(45deg);
+    cursor: pointer;
+}
+
+body {
+    background-color: rgb(232, 238, 247)
+}
+.main {
+    background-image: url("../Images/crowd-2045499__340.jpg");
+    background-repeat: repeat-x;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    height: 700px;
+}
+
+
+
+.main h1 {
+    text-align: center;
+    margin-top: 200px;
+}
+
+.main h2 {
+    text-align: center;
+    text-decoration-color: darkslategrey;
+}
+
+.main button {
+    width:100px;
+}
+
+.button {
+    text-align: center;
+}
+
