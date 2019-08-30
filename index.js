@@ -11,11 +11,6 @@ const AccessToken = twilio.jwt.AccessToken;
 const VideoGrant = AccessToken.VideoGrant;
 const ChatGrant = AccessToken.ChatGrant;
 
-const bcrypt = require("bcrypt");
-const SequelizeStore = require("connect-session-sequelize")(session.Store);
-const db = require("./models");
-const myStore = new SequelizeStore({ db: db.sequelize });
-
 // Only load local environment (.env) file if not hosted on Heroku, etc.
 if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
