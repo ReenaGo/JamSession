@@ -28,9 +28,24 @@
         <div><h2 id="aboutMe"><%=bio%></h2></div>
         <div id="myCommunities"> 
             <h1>Go to Community Pages</h1>
+
+            <div class="form-group">
+            <label class="col-md-4 control-label" for="singlebutton"></label>
+            <div class="col-md-4">
+              <a href="#" class="btn btn-block btn-info" id="Musicians" onclick="startChat();showChatWindow();hideSignInWindow()"><span class="glyphicon glyphicon-comment"></span> Start Chatting with Musicians</a>
+            </div>
+          </div>
            
         </div>
 
     </div>
+     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="chat.js"></script>
+    <script src="https://media.twiliocdn.com/sdk/js/common/v0.1/twilio-common.min.js"></script>
+    <script src="https://media.twiliocdn.com/sdk/js/chat/v0.11/twilio-chat.min.js"></script>
 </body>
 </html> 

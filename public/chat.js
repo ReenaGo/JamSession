@@ -36,12 +36,13 @@ function getTokenAndSetupChat(memberName,endpointId)
 
 
 
-function startChat(cobrowserId,sessionKey)
+//function startChat(cobrowserId,sessionKey)
+function startChat(communityName, memberName)
   {
        $('#chatHistory').empty();
-      channelType=$('#channelType').val();
-      channelName=$('#channelName').val();
-      memberName=$('#memberName').val();
+      channelType=1;
+      channelName=communityName;
+      //memberName
 
       if (channelName === "")
          {
