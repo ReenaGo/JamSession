@@ -81,6 +81,7 @@ function startChat(cobrowserId,sessionKey)
                                                 // Join a previously created channel
 client.on('channelJoined', function(myChannel) {
   console.log('Joined channel ' + myChannel.friendlyName);
+  getHistory(myChannel.friendlyName);
 });
 
 myChannel.join().catch(function(err) {
