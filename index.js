@@ -1,16 +1,17 @@
 const path = require("path");
-const express = require('express');
-const session = require('express-session');
+const express = require("express");
+const session = require("express-session");
 const twilio = require("twilio");
-const bodyParser = require('body-parser')
-const bcrypt = require ('bcrypt');
-const SequelizeStore = require ('connect-session-sequelize')(session.Store);
-const db = require ('./models');
-const myStore = new SequelizeStore({db: db.sequelize});
+const bodyParser = require("body-parser");
+const bcrypt = require("bcrypt");
+const SequelizeStore = require("connect-session-sequelize")(session.Store);
+const db = require("./models");
+const randomName = require("./randomname");
+const myStore = new SequelizeStore({ db: db.sequelize });
 const AccessToken = twilio.jwt.AccessToken;
 const VideoGrant = AccessToken.VideoGrant;
 const ChatGrant = AccessToken.ChatGrant;
-var http = require('http');
+var http = require("http");
 //var config = require('./config');
 var IpMessagingGrant = AccessToken.IpMessagingGrant;
 //var twiliAccntInfoFromFile=config.getTwiliAccountSettingsfromFile ;
@@ -23,7 +24,7 @@ if (process.env.NODE_ENV !== "production") {
 // Load configuration information from system environment variables.
 const TWILIO_ACCOUNT_SID = process.env.TWILIO_ACCOUNT_SID;
 const TWILIO_AUTH_TOKEN = process.env.TWILIO_AUTH_TOKEN;
-var    TWILIO_IPM_SERVICE_SID = process.env.TWILIO_CHAT_SERVICE_SID ;
+var TWILIO_IPM_SERVICE_SID = process.env.TWILIO_CHAT_SERVICE_SID;
 const TWILIO_API_KEY = process.env.TWILIO_API_KEY;
 const TWILIO_API_SECRET = process.env.TWILIO_API_SECRET;
 const PORT = process.env.PORT || 3000;
@@ -55,85 +56,82 @@ app.use(express.static(path.join(__dirname, "assets")));
 app.set("view engine", "ejs");
 app.set("views", "app/views");
 
-
 //***********************************************************************************************/
 //Signup functionality
 app.get("/signup", (req, res, next) => {
-    res.render('signup', {})
+  res.render("signup", {});
 });
 
-app.post("/signup", (req, res, next)=>{
-    // signup *****
-    let firstName = req.body.firstName;
-    let lastName = req.body.lastName;
-    let email =req.body.email;
-    let password = req.body.password;
-    let bio = req.body.Bio1;
-    let imageURL = req.body.imageURL;
+app.post("/signup", (req, res, next) => {
+  // signup *****
+  let firstName = req.body.firstName;
+  let lastName = req.body.lastName;
+  let email = req.body.email;
+  let password = req.body.password;
+  let bio = req.body.Bio1;
+  let imageURL = req.body.imageURL;
 
-    bcrypt.hash(password,10,(err,hash)=>{
-        db.user.create({firstName: firstName, lastName: lastName, email: email, Image: imageURL, Bio: bio, password: hash}).then((user)=>{
-            req.session.user_id = user.id;
-            res.redirect("/profilePage");
-        });
-    });
-
-    
+  bcrypt.hash(password, 10, (err, hash) => {
+    db.user
+      .create({ firstName: firstName, lastName: lastName, email: email, Image: imageURL, Bio: bio, password: hash })
+      .then(user => {
+        req.session.user_id = user.id;
+        res.redirect("/profilePage");
+      });
+  });
 });
-
-
 
 // ***************************************************************************************************
 // login Functionality
-app.post('/login', (req,res,next)=>{
-    var emailforlogin = req.body.emailforlogin;
-    var passwordforlogin = req.body.passwordforlogin;
-    db.user.findOne({ where: { email: emailforlogin } }).then(function (user) {
-      if (user === null) {
-        res.render('signup', { error_message: 'User Not Found' });
-      } else {
-        bcrypt.compare(passwordforlogin, user.password, function (err, matched) {
-          if (matched) {
-            // set user_id in the session
-            req.session.user_id = user.id
-            // redirect to welcome page
-            res.redirect("/profilePage");
-          } else {
-            // render the login form
-            res.render("signup", { error_message: 'Bad Password' });
-          }
-        });
-      }
-    });
-})
+app.post("/login", (req, res, next) => {
+  var emailforlogin = req.body.emailforlogin;
+  var passwordforlogin = req.body.passwordforlogin;
+  db.user.findOne({ where: { email: emailforlogin } }).then(function(user) {
+    if (user === null) {
+      res.render("signup", { error_message: "User Not Found" });
+    } else {
+      bcrypt.compare(passwordforlogin, user.password, function(err, matched) {
+        if (matched) {
+          // set user_id in the session
+          req.session.user_id = user.id;
+          // redirect to welcome page
+          res.redirect("/profilePage");
+        } else {
+          // render the login form
+          res.render("signup", { error_message: "Bad Password" });
+        }
+      });
+    }
+  });
+});
 
 // ************************************************************************************************
 // Profile Page Functionality
-app.get("/profilePage",(req,res,next)=>{
-    // res.render('profilePage')
-      db.user.findByPk(req.session.user_id).then(function (user) {
-        db.communities.findAll({
-          attributes: ['comName']}).then(function (communities){
-        res.render('profilePage', {
-            firstName: user.firstName,
-            lastName: user.lastName,
-            imageURL: user.Image,
-            bio: user.Bio,
-            communities: communities.comName
-          });
+app.get("/profilePage", (req, res, next) => {
+  // res.render('profilePage')
+  db.user.findByPk(req.session.user_id).then(function(user) {
+    db.communities
+      .findAll({
+        attributes: ["comName"]
+      })
+      .then(function(communities) {
+        res.render("profilePage", {
+          firstName: user.firstName,
+          lastName: user.lastName,
+          imageURL: user.Image,
+          bio: user.Bio,
+          communities: communities.comName
         });
       });
-  })
+  });
+});
 
-app.get("/chat" , function(req,res)
- {    
-    //console.log(__dirname);
-    //res.sendFile(__dirname);
-    res.render('chat')
-   
- }
-);
-    
+app.get("/chat", function(req, res) {
+  //console.log(__dirname);
+  //res.sendFile(__dirname);
+  res.render("chat");
+});
+
 // *************************************************************************************************
 // community Page functionality
 // app.get('community/:id', (req, res, next)=>{
@@ -145,12 +143,6 @@ app.get("/chat" , function(req,res)
 //     })
 //   })
 // })
-
-
-
-
-
-
 
 // endpoint to procure Twilio Video Token
 app.get("/videoToken", (req, res) => {
@@ -180,35 +172,34 @@ Generate an Access Token for a chat application user - it generates a random
 username for the client requesting a token, and takes a device ID as a query
 parameter.
 */
-app.get('/chatToken', function(request, response) {
-    var identity = request.query.identity;
-    var endpointId = request.query.endpointId;
+app.get("/chatToken", function(request, response) {
+  var identity = request.query.identity;
+  var endpointId = request.query.endpointId;
 
-    // Create a "grant" which enables a client to use IPM as a given user,
-    // on a given device
-    var ipmGrant = new IpMessagingGrant({
-        serviceSid: TWILIO_IPM_SERVICE_SID,
-        endpointId: endpointId
-    });
+  // Create a "grant" which enables a client to use IPM as a given user,
+  // on a given device
+  var ipmGrant = new IpMessagingGrant({
+    serviceSid: TWILIO_IPM_SERVICE_SID,
+    endpointId: endpointId
+  });
 
-    // Create an access token which we will sign and return to the client,
-    // containing the grant we just created
-    //console.log(TWILIO_ACCOUNT_SID);
-    //console.log(TWILIO_IPM_API_KEY);
-    //console.log(TWILIO_IPM_API_SECRET);
-    //console.log(TWILIO_IPM_SERVICE_SID);
+  // Create an access token which we will sign and return to the client,
+  // containing the grant we just created
+  //console.log(TWILIO_ACCOUNT_SID);
+  //console.log(TWILIO_IPM_API_KEY);
+  //console.log(TWILIO_IPM_API_SECRET);
+  //console.log(TWILIO_IPM_SERVICE_SID);
 
-    var token = new AccessToken(TWILIO_ACCOUNT_SID, TWILIO_API_KEY, TWILIO_API_SECRET);
-    token.addGrant(ipmGrant);
-    token.identity = identity;
+  var token = new AccessToken(TWILIO_ACCOUNT_SID, TWILIO_API_KEY, TWILIO_API_SECRET);
+  token.addGrant(ipmGrant);
+  token.identity = identity;
 
-    // Serialize the token to a JWT string and include it in a JSON response
-    response.send({
-        identity: identity,
-        token: token.toJwt()
-    });
+  // Serialize the token to a JWT string and include it in a JSON response
+  response.send({
+    identity: identity,
+    token: token.toJwt()
+  });
 });
-
 
 app.listen(PORT, () => {
   console.log(`Express listening on port ${PORT}`);
