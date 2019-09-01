@@ -12,15 +12,9 @@
     <!-- Navbar -->
     <div id="navbar1"> 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <!-- <li class="nav-item">
-                            <a id="login_button" class="nav-link disabled" href="#">Login</a>
-        </li> -->
-            <a class="navbar-brand" href="#">Jam Sessionsssssss</a>
+            <a class="navbar-brand" href="#">Jam Session</a>
             <div id="navbarSupportedContent navbar1">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                    </li>
                     <li class="nav-item">
                             <a id="login_button" class="nav-link disabled" href="#">Login</a>
                     </li>
@@ -30,7 +24,7 @@
     </div>
     <!-- login modal -->
     <div class="bg-modal1">
-            <div class="modal-content">
+            <div class="modal-content1">
                 <br/>
                 <div class="close1">+</div>
                 <form action="/login" method="POST">
@@ -72,7 +66,7 @@
             <div class="close">+</div>
             <form action="/signup" method="POST">
                 <div class="form-group">
-                    <input type="firstName" name="firstName" class="form-control" id="firstName" aria-describedby="emailHelp" placeholder="Enter First Name">
+                    <input type="text" name="firstName" class="form-control" id="firstName" aria-describedby="emailHelp" placeholder="Enter First Name">
                 </div>
                 <div class="form-group">
                     <input type="text" name="lastName" class="form-control" id="lastName" placeholder="Enter Last Name">
@@ -82,9 +76,14 @@
                 </div>
                 <div class="form-group">
                     <input type="password" name="password" class="form-control" id="password" placeholder="Enter Password">
-                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                 </div>
-                      
+                <div class="form-group">
+                    <small id="emailHelp" class="form-text text-muted">About me: </small>
+                    <textarea name='Bio1'></textarea>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="imageURL" class="form-control" id="imageURL" placeholder="Enter imageURL">
+                </div>
                 <button type="submit" class="btn btn-primary">Submit</button>           
             </form>
         </div>

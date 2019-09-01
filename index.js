@@ -49,18 +49,9 @@ app.use(express.static(path.join(__dirname, "public")));
 app.set("view engine", "ejs");
 app.set("views", "app/views");
 
-// Express Routes
 
-app.get("/test", (req, res, next) => {
-  res.send("Success");
-});
-
-// ejs test
-app.get("/reena", (req, res, next) => {
-  res.render("login", { reena: "is the best" });
-});
-
-
+//***********************************************************************************************/
+//Signup functionality
 app.get("/signup", (req, res, next) => {
     res.render('signup', {})
 });
@@ -71,10 +62,11 @@ app.post("/signup", (req, res, next)=>{
     let lastName = req.body.lastName;
     let email =req.body.email;
     let password = req.body.password;
-    console.log(firstName, lastName, email, password)
+    let bio = req.body.Bio1;
+    let imageURL = req.body.imageURL;
 
     bcrypt.hash(password,10,(err,hash)=>{
-        db.user.create({firstName: firstName, lastName: lastName, email: email, password: hash,}).then((user)=>{
+        db.user.create({firstName: firstName, lastName: lastName, email: email, Image: imageURL, Bio: bio, password: hash}).then((user)=>{
             req.session.user_id = user.id;
             res.redirect("/profilePage");
         });
@@ -85,13 +77,11 @@ app.post("/signup", (req, res, next)=>{
 
 
 
-
+// ***************************************************************************************************
+// login Functionality
 app.post('/login', (req,res,next)=>{
-
     var emailforlogin = req.body.emailforlogin;
     var passwordforlogin = req.body.passwordforlogin;
-
-  
     db.user.findOne({ where: { email: emailforlogin } }).then(function (user) {
       if (user === null) {
         res.render('signup', { error_message: 'User Not Found' });
@@ -111,16 +101,41 @@ app.post('/login', (req,res,next)=>{
     });
 })
 
+// ************************************************************************************************
+// Profile Page Functionality
 app.get("/profilePage",(req,res,next)=>{
     // res.render('profilePage')
       db.user.findByPk(req.session.user_id).then(function (user) {
+        db.communities.findAll({
+          attributes: ['comName']}).then(function (communities){
         res.render('profilePage', {
             firstName: user.firstName,
-            lastName: user.lastName
+            lastName: user.lastName,
+            imageURL: user.Image,
+            bio: user.Bio,
+            communities: communities.comName
+          });
         });
       });
   })
     
+// *************************************************************************************************
+// community Page functionality
+// app.get('community/:id', (req, res, next)=>{
+//   let communityId = req.params.id;
+//   db.communities.findOne(communityId).then(function (community)=>{
+//     res.render('community', {
+//       comName: communities.comName;
+//       description: communities.description;
+//     })
+//   })
+// })
+
+
+
+
+
+
 
 // endpoint to procure Twilio Video Token
 app.get("/videoToken", (req, res) => {
