@@ -146,7 +146,7 @@ app.get("/chat", function(req, res) {
 
 // endpoint to procure Twilio Video Token
 app.get("/videoToken", (req, res) => {
-  const identity = req.query.identity || "anonymous";
+  const identity = req.query.identity || randomName();
 
   // Create an access token which we will sign and return to the client,
   // containing the grant we just created.
