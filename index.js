@@ -10,6 +10,10 @@ const myStore = new SequelizeStore({db: db.sequelize});
 const AccessToken = twilio.jwt.AccessToken;
 const VideoGrant = AccessToken.VideoGrant;
 const ChatGrant = AccessToken.ChatGrant;
+var http = require('http');
+//var config = require('./config');
+var IpMessagingGrant = AccessToken.IpMessagingGrant;
+//var twiliAccntInfoFromFile=config.getTwiliAccountSettingsfromFile ;
 
 // Only load local environment (.env) file if not hosted on Heroku, etc.
 if (process.env.NODE_ENV !== "production") {
@@ -19,6 +23,7 @@ if (process.env.NODE_ENV !== "production") {
 // Load configuration information from system environment variables.
 const TWILIO_ACCOUNT_SID = process.env.TWILIO_ACCOUNT_SID;
 const TWILIO_AUTH_TOKEN = process.env.TWILIO_AUTH_TOKEN;
+var    TWILIO_IPM_SERVICE_SID = process.env.TWILIO_CHAT_SERVICE_SID ;
 const TWILIO_API_KEY = process.env.TWILIO_API_KEY;
 const TWILIO_API_SECRET = process.env.TWILIO_API_SECRET;
 const PORT = process.env.PORT || 3000;
@@ -44,6 +49,7 @@ app.use(express.json());
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "assets")));
 
 // set up ejs
 app.set("view engine", "ejs");
@@ -120,6 +126,15 @@ app.get("/profilePage",(req,res,next)=>{
         });
       });
   })
+
+app.get("/chat" , function(req,res)
+ {    
+    //console.log(__dirname);
+    //res.sendFile(__dirname);
+    res.render('chat')
+   
+ }
+);
     
 
 // endpoint to procure Twilio Video Token
@@ -145,26 +160,38 @@ app.get("/videoToken", (req, res) => {
 });
 
 // endpoint to procure Twilio Chat Token
-app.get("/chatToken", (req, res) => {
-  const identity = req.query.identity || "anonymous";
+/*
+Generate an Access Token for a chat application user - it generates a random
+username for the client requesting a token, and takes a device ID as a query
+parameter.
+*/
+app.get('/chatToken', function(request, response) {
+    var identity = request.query.identity;
+    var endpointId = request.query.endpointId;
 
-  // Create an access token which we will sign and return to the client,
-  // containing the grant we just created.
-  const token = new AccessToken(TWILIO_ACCOUNT_SID, TWILIO_API_KEY, TWILIO_API_SECRET);
+    // Create a "grant" which enables a client to use IPM as a given user,
+    // on a given device
+    var ipmGrant = new IpMessagingGrant({
+        serviceSid: TWILIO_IPM_SERVICE_SID,
+        endpointId: endpointId
+    });
 
-  // Assign the generated identity to the token (passed in from client)
-  token.identity = identity;
-  token.ttl = 7200;
+    // Create an access token which we will sign and return to the client,
+    // containing the grant we just created
+    //console.log(TWILIO_ACCOUNT_SID);
+    //console.log(TWILIO_IPM_API_KEY);
+    //console.log(TWILIO_IPM_API_SECRET);
+    //console.log(TWILIO_IPM_SERVICE_SID);
 
-  // Grant the access token Twilio Video capabilities.
-  const grant = new ChatGrant();
-  token.addGrant(grant);
+    var token = new AccessToken(TWILIO_ACCOUNT_SID, TWILIO_API_KEY, TWILIO_API_SECRET);
+    token.addGrant(ipmGrant);
+    token.identity = identity;
 
-  // Serialize the token to a JWT string and include it in a JSON response.
-  res.send({
-    identity: identity,
-    token: token.toJwt()
-  });
+    // Serialize the token to a JWT string and include it in a JSON response
+    response.send({
+        identity: identity,
+        token: token.toJwt()
+    });
 });
 
 
