@@ -9,11 +9,28 @@
     <link rel="stylesheet" type="text/css" href="./Stylesheets/login.css">
 </head>
 <body>
-    <div><% include partials/Navbar %></div>
-    <div id="profileInfo">
-        <div id="profilePicture">hi</div>
-        <h1> <%= firstName %> <%= lastName %></h1>
+     <!-- Navbar -->
+     <div id="navbar1"> 
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Jam Session</a>
+            <div id="navbarSupportedContent navbar1">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                            <a id="login_button" class="nav-link disabled" href="#">LOGOUT</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
     </div>
-    <div id="myCommunities"></div>
+    <div id="profileInfo">
+        <div id="profilePicture"><img src=<%= imageURL %> alt=""/></div>
+        <div><h1> <%= firstName %> <%= lastName %></h1></div>
+        <div><h2 id="aboutMe"><%=bio%></h2></div>
+        <div id="myCommunities"> 
+            <h1>Go to Community Pages</h1>
+           
+        </div>
+
+    </div>
 </body>
 </html> 

@@ -26,6 +26,15 @@
 
 .modal-content {
     width: 500px;
+    height: 700px;
+    background-color: white;
+    border-radius: 4px;
+    padding: 30px;
+    position: relative;
+}
+
+.modal-content1 {
+    width: 500px;
     height: 400px;
     background-color: white;
     border-radius: 4px;
@@ -84,3 +93,34 @@ body {
     text-align: center;
 }
 
+#profileInfo {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    border-style: solid;
+    height: 600px;
+}
+
+
+#profileInfo h1 {
+    border-style: solid;
+    text-align: center;
+}
+
+#profileInfo h2 {
+    border-style: solid;
+    text-align: center;
+}
+
+#profilePicture {
+    border-style: solid;
+    text-align: center;
+    height: 250px;
+
+}
+
+#profilePicture img {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+}
