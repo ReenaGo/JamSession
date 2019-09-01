@@ -75,15 +75,26 @@ function startChat(cobrowserId,sessionKey)
                                                 {
                                                   console.log(channelName  + "already exists ") ;
                                                   myChannel=chosenChannel;
+                                                console.log("myChannel: " + myChannel.friendlyName)
+                                                 //getHistory(myChannel.friendlyName);
 
+                                                // Join a previously created channel
+client.on('channelJoined', function(myChannel) {
+  console.log('Joined channel ' + myChannel.friendlyName);
+});
 
+myChannel.join().catch(function(err) {
+  console.error(
+    "Couldn't join channel " + channel.friendlyName + ' because ' + err
+  );
+});
 
-                                                  myChannel.join().then(function(channel)
-                                                  {
-                                                      console.log('Joining channel ' + channel.friendlyName)
-                                                      $('#statusMessages').text('Joining channel ' + channel.friendlyName);
-                                                      getHistory(channel.friendlyName);
-                                                  });
+                                                //   myChannel.join().then(function(channel)
+                                                //   {
+                                                //       console.log('Joining channel ' + channel.friendlyName)
+                                                //       $('#statusMessages').text('Joining channel ' + channel.friendlyName);
+                                                //       getHistory(channel.friendlyName);
+                                                //   });
 
                                                   myChannel.on('messageAdded', function(message)
                                                   {
@@ -121,6 +132,7 @@ function startChat(cobrowserId,sessionKey)
                                                                       isPrivate	: flagIsPrivate
                                                                   }).then(function(createdChannel)
                                                                   {
+                                                                      console.log("Is this printing?")
                                                                       console.log('Created  channel:');
                                                                       $('#statusMessages').text('Created channel ' + createdChannel.friendlyName);
                                                                       console.log(createdChannel);
