@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <% include partials/head %>
-    <link rel="stylesheet" type="text/css" href="./Stylesheets/login.css">
+    <link rel="stylesheet" type="text/css" href="../Stylesheets/login.css">
 </head>
 <body>
      <!-- Navbar -->
@@ -16,21 +16,25 @@
             <div id="navbarSupportedContent navbar1">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                            <a id="login_button" class="nav-link disabled" href="#">LOGOUT</a>
+                            <a id="logout_button" class="nav-link disabled" href="/signOut">LOGOUT</a>
                     </li>
                 </ul>
             </div>
         </nav>
     </div>
     <div id="profileInfo">
-        <div id="profilePicture"><img src=<%= imageURL %> alt=""/></div>
+        <div id="profilePicture"><img src= <%=imageURL %> ></div>
         <div><h1> <%= firstName %> <%= lastName %></h1></div>
         <div><h2 id="aboutMe"><%=bio%></h2></div>
         <div id="myCommunities"> 
             <h1>Go to Community Pages</h1>
            
         </div>
-
-    </div>
+         <ul>
+            <% communities.forEach(function(community){ %>
+            <li><a href="/community/<%= community.id %>"> <%= community.comName %> </a></li>
+            <% }) %>
+            </ul>
+        </div>
 </body>
 </html> 

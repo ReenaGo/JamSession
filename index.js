@@ -106,32 +106,58 @@ app.post('/login', (req,res,next)=>{
 app.get("/profilePage",(req,res,next)=>{
     // res.render('profilePage')
       db.user.findByPk(req.session.user_id).then(function (user) {
-        db.communities.findAll({
-          attributes: ['comName']}).then(function (communities){
+        db.communities.findAll().then(function (communities){
         res.render('profilePage', {
             firstName: user.firstName,
             lastName: user.lastName,
             imageURL: user.Image,
             bio: user.Bio,
-            communities: communities.comName
+            communities: communities
           });
         });
+        console.log(communities)
       });
   })
     
 // *************************************************************************************************
 // community Page functionality
-// app.get('community/:id', (req, res, next)=>{
-//   let communityId = req.params.id;
-//   db.communities.findOne(communityId).then(function (community)=>{
-//     res.render('community', {
-//       comName: communities.comName;
-//       description: communities.description;
-//     })
-//   })
-// })
+app.get('/community/:id', (req, res, next)=>{
+  let communityId = req.params.id;
+  db.communities.findOne({ where: {id: communityId } }).then(function (communities) {
+    res.render('community', {
+      comName: communities.comName,
+      description: communities.Description
+    })
+  })
+})
+
+//**************************************************************************************************/
+// community Page create Jams
+app.post('/community/:id',(req,res,next)=>{
+  jamName = req.body.jamName;
+  jamDescription = req.body.jamDescription;
+  jamURL = req.body.jamURL;
+
+  db.user.create({jameName: jamName, jamDescription: jamDescription, jamURL: jamURL}).then((jam)=>{
+    req.session.communities_id = communities.id;
+    res.redirect("/community/:id");
+});
 
 
+})
+
+
+
+
+
+
+//**********************************************************************************************/
+//logout
+app.get("/signOut", function (req, res, next) {
+  req.session.destroy(function () {
+    res.redirect("/signup");
+  });
+});
 
 
 

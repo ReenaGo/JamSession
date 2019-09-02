@@ -5,11 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <% include partials/head %>
+    <link rel="stylesheet" href="../Stylesheets/login.css">
+
 </head>
 <body>
     <div>
          <!-- Navbar -->
-     <div id="navbar1"> 
+        <div id="navbar1"> 
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <a class="navbar-brand" href="#">Jam Session</a>
                 <div id="navbarSupportedContent navbar1">
@@ -21,7 +24,44 @@
                 </div>
             </nav>
         </div>
-        <H1>Welcome to <%= comName %> Jams!</H1>
+        <H1>Welcome to <%= comName %> Jam Session!</H1>
+        <H2><%= description %></H2>
+        <div id="communitybody">
+            <div id="chat">Chat</div>
+            <div id="Jams">
+                <button ><a id="create_jam_button" class="nav-link disabled" href="">New Jam</a></button>
+
+                <!-- create Jam modal -->
+                    <div class="bg-modal2">
+                        <div class="modal-content2">
+                            <br/>
+                            <div class="close2">+</div>
+                            <form action="/community/:id" method="POST">
+                                <div class="form-group">
+                                    <input type="text" name="jamName" class="form-control" id="jamName"  placeholder="Enter Name of Jam">
+                                </div>
+                                <div class="form-group">
+                                    <textarea type="test" name="jamDescription" class="form-control" id="jamDescription" placeholder="Enter Description">
+                                </div>  
+                                <button type="submit" class="btn btn-primary">Create Jam</button>           
+                            </form>
+                        </div>
+                    </div>
+
+                    <script>
+                            document.getElementById('create_jam_button').addEventListener('click',()=>{
+                                document.querySelector('.bg-modal2').style.display = 'flex';
+                            })
+                            
+                            document.querySelector('.close2').addEventListener('click', ()=>{
+                                document.querySelector('.bg-modal2').style.display = 'none';
+                            })
+                    </script>
+
+                <div>Jam 1</div>
+            </div>
+        </div>
+
 
     </div>
 
