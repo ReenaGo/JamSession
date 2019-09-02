@@ -161,10 +161,6 @@ app.post('/community/:id',(req,res,next)=>{
 })
 
 
-
-
-
-
 //**********************************************************************************************/
 //logout
 app.get("/signOut", function (req, res, next) {
