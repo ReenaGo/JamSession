@@ -17,20 +17,24 @@
                 <a class="navbar-brand" href="#">Jam Session</a>
                 <div id="navbarSupportedContent navbar1">
                     <ul class="navbar-nav mr-auto">
+                            <li class="nav-item">
+                                    <a id="login_button" class="nav-link disabled" href="">PROFILE</a>
+                            </li>
                         <li class="nav-item">
-                                <a id="login_button" class="nav-link disabled" href="#">LOGOUT</a>
+                                <a id="login_button" class="nav-link disabled" href="/signOut">LOGOUT</a>
                         </li>
                     </ul>
                 </div>
             </nav>
         </div>
-        <H1>Welcome to <%= comName %> Jam Session!</H1>
+        <div id="welcome"><H1 >Welcome to <%= comName %> Jam Session!</H1></div>
         <H2><%= description %></H2>
         <div id="communitybody">
             <div id="chat">Chat</div>
             <div id="Jams">
-                    <div class="button" id="signup_button1"><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Create Jam</button>
-                    </div>
+                <div class="button" id="create_jam_button"><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Create Jam</button>
+                </div>
+                <br>
             
                 
                 <!-- sign up Modal -->
@@ -57,7 +61,7 @@
                     </div>
                 </div>
                 <script>
-                document.getElementById('signup_button1').addEventListener('click',()=>{
+                document.getElementById('create_jam_button').addEventListener('click',()=>{
                     document.querySelector('.bg-modal2').style.display = 'flex';
                 })
                 
@@ -66,8 +70,8 @@
                 })
                 </script>
 
-                <div>  <% jams.forEach(function(jam){ %>
-                    <div class="card">
+                <div id='jamcards'>  <% jams.forEach(function(jam){ %>
+                    <div class="card1">
                         <h5 class="card-header">Upcoming</h5>
                         <div class="card-body">
                           <h5 class="card-title"><%= jam.jamName %></h5>
@@ -76,6 +80,7 @@
                           <a href="#" class="btn btn-primary">Join</a>
                         </div>
                       </div>
+                      <br>
 
 
 

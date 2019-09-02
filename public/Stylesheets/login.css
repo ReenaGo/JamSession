@@ -131,23 +131,19 @@ body {
     display: flex;
     flex-direction: column;
     align-content: center;
-    border-style: solid;
     height: 600px;
 }
 
 
 #profileInfo h1 {
-    border-style: solid;
     text-align: center;
 }
 
 #profileInfo h2 {
-    border-style: solid;
     text-align: center;
 }
 
 #profilePicture {
-    border-style: solid;
     text-align: center;
     height: 250px;
 
@@ -156,22 +152,40 @@ body {
 #profilePicture img {
     height: 200px;
     width: 200px;
-    border-radius: 50%;
 }
 
 #communitybody {
     display: flex;
     flex-direction: row;
-    border-style: solid;
-    height: 700px;
+    height: 100%;
+    padding-left: 80px;
 }
 
 #chat {
-    border-style: solid;
     width: 50%;
+    background-color: white;
 }
 
 #jams {
     border-style: solid;
     width: 50%;
+    }
+
+.card1 {
+    background-color: white;
+    box-shadow: 10px, 10px, 5px, grey;
+
+
+}
+
+#jamcards {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding-left: 80px;
+    
+}
+
+#welcome {
+    padding-left: 80px;
 }
