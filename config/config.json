@@ -9,8 +9,8 @@
   },
   
   "production": {
-    "username": "root",
-    "password": null,
+    "username": "postgres",
+    "password": "postgres",
     "database": "database_production",
     "host": "127.0.0.1",
     "dialect": "postgres",
