@@ -32,6 +32,7 @@
     opacity: 1;
     position: absolute;
     top: 0;
+    left: 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -59,7 +60,7 @@
 
 .modal-content2 {
     width: 500px;
-    height: 700px;
+    height: 500px;
     background-color: white;
     border-radius: 4px;
     padding: 30px;

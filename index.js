@@ -123,24 +123,31 @@ app.get("/profilePage",(req,res,next)=>{
 // community Page functionality
 app.get('/community/:id', (req, res, next)=>{
   let communityId = req.params.id;
+   req.session.community_id = communityId;
   db.communities.findOne({ where: {id: communityId } }).then(function (communities) {
+    db.jam.findAll().then(function(jams){
     res.render('community', {
       comName: communities.comName,
-      description: communities.Description
-    })
-  })
-})
+      description: communities.Description,
+      jams:jams
+      });
+    });
+  });
+});
 
 //**************************************************************************************************/
 // community Page create Jams
 app.post('/community/:id',(req,res,next)=>{
+  let communityId = req.params.id;
+  req.session.community_id = communityId;
+
   jamName = req.body.jamName;
   jamDescription = req.body.jamDescription;
-  jamURL = req.body.jamURL;
+  date = req.body.date;
+  time = req.body.time;
 
-  db.user.create({jameName: jamName, jamDescription: jamDescription, jamURL: jamURL}).then((jam)=>{
-    req.session.communities_id = communities.id;
-    res.redirect("/community/:id");
+  db.jam.create({jamName: jamName, jamDescription: jamDescription, date: date, time: time}).then((jam)=>{
+    res.redirect(`/community/${communityId}`);
 });
 
 

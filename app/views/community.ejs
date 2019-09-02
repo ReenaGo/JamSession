@@ -29,36 +29,58 @@
         <div id="communitybody">
             <div id="chat">Chat</div>
             <div id="Jams">
-                <button ><a id="create_jam_button" class="nav-link disabled" href="">New Jam</a></button>
-
-                <!-- create Jam modal -->
-                    <div class="bg-modal2">
-                        <div class="modal-content2">
-                            <br/>
-                            <div class="close2">+</div>
-                            <form action="/community/:id" method="POST">
-                                <div class="form-group">
-                                    <input type="text" name="jamName" class="form-control" id="jamName"  placeholder="Enter Name of Jam">
-                                </div>
-                                <div class="form-group">
-                                    <textarea type="test" name="jamDescription" class="form-control" id="jamDescription" placeholder="Enter Description">
-                                </div>  
-                                <button type="submit" class="btn btn-primary">Create Jam</button>           
-                            </form>
-                        </div>
+                    <div class="button" id="signup_button1"><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Create Jam</button>
                     </div>
+            
+                
+                <!-- sign up Modal -->
+                <div class="bg-modal2">
+                    <div class="modal-content2">
+                        <div class="close2">+</div>
+                        <br>
+                        <form action="/community/4" method="POST">
+                            <div class="form-group">
+                                <input type="text" name="jamName" class="form-control" id="firstName" aria-describedby="emailHelp" placeholder="Enter Name of Jam">
+                            </div>
+                            <div class="form-group">
+                                    <small class="form-text text-muted">Describe your Jam... </small>
+                                    <textarea name='jamDescription'></textarea>
+                                </div>
+                            <div class="form-group">
+                                <input type="text" name="date" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter Date YYYY-MM-DD">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="time" class="form-control" id="password" placeholder="Enter Time 00:00:00">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>           
+                        </form>
+                    </div>
+                </div>
+                <script>
+                document.getElementById('signup_button1').addEventListener('click',()=>{
+                    document.querySelector('.bg-modal2').style.display = 'flex';
+                })
+                
+                document.querySelector('.close2').addEventListener('click', ()=>{
+                    document.querySelector('.bg-modal2').style.display = 'none';
+                })
+                </script>
 
-                    <script>
-                            document.getElementById('create_jam_button').addEventListener('click',()=>{
-                                document.querySelector('.bg-modal2').style.display = 'flex';
-                            })
-                            
-                            document.querySelector('.close2').addEventListener('click', ()=>{
-                                document.querySelector('.bg-modal2').style.display = 'none';
-                            })
-                    </script>
+                <div>  <% jams.forEach(function(jam){ %>
+                    <div class="card">
+                        <h5 class="card-header">Upcoming</h5>
+                        <div class="card-body">
+                          <h5 class="card-title"><%= jam.jamName %></h5>
+                          <p class="card-text"><%= jam.jamDescription %></p>
+                          <p class="card-text"><%= jam.date %>, <%= jam.time %></p>
+                          <a href="#" class="btn btn-primary">Join</a>
+                        </div>
+                      </div>
 
-                <div>Jam 1</div>
+
+
+                    <% }) %>
+                </div>
             </div>
         </div>
 
