@@ -220,22 +220,22 @@ username for the client requesting a token, and takes a device ID as a query
 parameter.
 */
 
-let credentials = require("./credentials.json");
+//let credentials = require("./credentials.json");
 
 app.get("/chatToken", function(req, res) {
   let username = req.query.username;
     console.log("username is: ", username);
   let token = new AccessToken(
-      credentials.TWILIO_ACCOUNT_SID,
-      credentials.TWILIO_API_KEY,
-      credentials.TWILIO_API_SECRET,
+      TWILIO_ACCOUNT_SID,
+      TWILIO_API_KEY,
+      TWILIO_API_SECRET,
       {
           identity: username,
           ttl: 40000
       }
   );
 
-let grant = new ChatGrant({ serviceSid: credentials.TWILIO_CHAT_SERVICE_SID });
+let grant = new ChatGrant({ serviceSid: TWILIO_CHAT_SERVICE_SID });
 
   token.addGrant(grant);
   const tokenJwt = token.toJwt();

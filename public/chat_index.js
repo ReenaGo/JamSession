@@ -47,12 +47,21 @@ $(document).ready(function() {
       return chatClient
         .getPublicChannelDescriptors()
         .then(function(paginator) {
-          //EDIT THIS LATER TO ACCOUNT FOR ALREADY EXISTING CHANNELS
-          //paginator.items.length > 0
-          if (9 > 10 ) { 
-              console.log("paginator" + JSON.stringify(paginator));
-              return paginator.items[0]}
+          if (paginator.items.length > 0) 
+          {
+              
+            //if channel exists, then join that channel instead of creating a new one
+            for (i = 0; i < paginator.items.length; i++) {
+                const channel = paginator.items[i];
+                if (comName == channel.friendlyName) {
+                  return channel;
+                };
+                //console.log('Channel: ' + channel.friendlyName);
+              }          
+            }
+          
           else {
+              //if channel doesn't exist, create a new channel
             chatClient
               .createChannel({
                 uniqueName: comName,
