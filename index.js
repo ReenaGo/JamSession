@@ -76,6 +76,7 @@ app.post("/signup", (req, res, next) => {
       .create({ firstName: firstName, lastName: lastName, email: email, Image: imageURL, Bio: bio, password: hash })
       .then(user => {
         req.session.user_id = user.id;
+        req.session.firstName= firstName;
         res.redirect("/profilePage");
       });
   });
@@ -120,7 +121,7 @@ app.get("/profilePage",(req,res,next)=>{
           });
 
         });
-        console.log(communities)
+        //console.log(communities)
       });
   });
 
@@ -130,13 +131,17 @@ app.get("/profilePage",(req,res,next)=>{
 // community Page functionality
 app.get('/community/:id', (req, res, next)=>{
   let communityId = req.params.id;
+  let userId = req.session.user_id;
+  let firstName = req.session.firstName;
    req.session.community_id = communityId;
   db.communities.findOne({ where: {id: communityId } }).then(function (communities) {
     db.jam.findAll().then(function(jams){
     res.render('community', {
       comName: communities.comName,
       description: communities.Description,
-      jams:jams
+      jams:jams,
+      userId: userId,
+      firstName: firstName
       });
     });
   });
@@ -168,6 +173,21 @@ app.get("/signOut", function (req, res, next) {
     res.redirect("/signup");
   });
 });
+
+//**********************************************************************************************/
+//video route
+app.get("/video/:jamName", function (req, res, next) {
+
+  let firstName = req.session.firstName;
+  let jamSession = req.params.jamName;
+  res.render('video', {
+    jamSession: jamSession,
+    firstName: firstName
+    });
+
+});
+
+
 
 
 

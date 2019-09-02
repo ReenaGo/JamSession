@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    let username = null;
+    let username = firstName;
     let chatChannel;
   
     while (!username) {
@@ -47,14 +47,16 @@ $(document).ready(function() {
       return chatClient
         .getPublicChannelDescriptors()
         .then(function(paginator) {
-          if (paginator.items.length > 0) { 
-              console.log("paginator.items[0]" + paginator.items[0] );
+          //EDIT THIS LATER TO ACCOUNT FOR ALREADY EXISTING CHANNELS
+          //paginator.items.length > 0
+          if (9 > 10 ) { 
+              console.log("paginator" + JSON.stringify(paginator));
               return paginator.items[0]}
           else {
             chatClient
               .createChannel({
-                uniqueName: "general",
-                friendlyName: "General Chat Channel"
+                uniqueName: comName,
+                friendlyName: comName
               })
               .then(function(newChannel) {
                 console.log("Created general channel:");

@@ -158,8 +158,8 @@ async function getRoomCredentials(identity) {
   // Get the credentials to connect to the Room.
 
   // REPLACE THIS WITH THE SESSION IDENTITY FROM EXPRESS and COMMUNITY
-  let participantIdentity = null;
-  let communityRoom = "hamsters";
+  let participantIdentity = firstName;
+  let communityRoom = jamSession;
 
   const creds = await getRoomCredentials(participantIdentity);
 
