@@ -81,26 +81,39 @@ function startChat(cobrowserId,sessionKey)
                                                 // Join a previously created channel
 client.on('channelJoined', function(myChannel) {
   console.log('Joined channel ' + myChannel.friendlyName);
+  $('#statusMessages').text('Joining channel ' + myChannel.friendlyName);
   getHistory(myChannel.friendlyName);
 });
 
 myChannel.join().catch(function(err) {
   console.error(
-    "Couldn't join channel " + channel.friendlyName + ' because ' + err
+    "Couldn't join channel " + myChannel.friendlyName + ' because ' + err
   );
 });
 
                                                 //   myChannel.join().then(function(channel)
+
                                                 //   {
                                                 //       console.log('Joining channel ' + channel.friendlyName)
                                                 //       $('#statusMessages').text('Joining channel ' + channel.friendlyName);
                                                 //       getHistory(channel.friendlyName);
                                                 //   });
 
+
+
+                                                client.on('messageAdded', function(message)
+                                                  {
+                                                    if ( message.author != memberName)
+                                                    printMessage(message.author, message.body)
+                                                      getHistory(myChannel.friendlyName);
+
+                                                  });
+
                                                   myChannel.on('messageAdded', function(message)
                                                   {
                                                     if ( message.author != memberName)
                                                     printMessage(message.author, message.body)
+                                                      getHistory(myChannel.friendlyName);
                                                   });
 
                                                   /*chatClient.on("channelJoined", function(channel)

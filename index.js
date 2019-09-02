@@ -23,7 +23,7 @@ if (process.env.NODE_ENV !== "production") {
 // Load configuration information from system environment variables.
 const TWILIO_ACCOUNT_SID = process.env.TWILIO_ACCOUNT_SID;
 const TWILIO_AUTH_TOKEN = process.env.TWILIO_AUTH_TOKEN;
-var    TWILIO_IPM_SERVICE_SID = process.env.TWILIO_CHAT_SERVICE_SID ;
+const TWILIO_CHAT_SERVICE_SID = process.env.TWILIO_CHAT_SERVICE_SID ;
 const TWILIO_API_KEY = process.env.TWILIO_API_KEY;
 const TWILIO_API_SECRET = process.env.TWILIO_API_SECRET;
 const PORT = process.env.PORT || 3000;
@@ -180,33 +180,33 @@ Generate an Access Token for a chat application user - it generates a random
 username for the client requesting a token, and takes a device ID as a query
 parameter.
 */
-app.get('/chatToken', function(request, response) {
-    var identity = request.query.identity;
-    var endpointId = request.query.endpointId;
 
-    // Create a "grant" which enables a client to use IPM as a given user,
-    // on a given device
-    var ipmGrant = new IpMessagingGrant({
-        serviceSid: TWILIO_IPM_SERVICE_SID,
-        endpointId: endpointId
-    });
+let credentials = require("./credentials.json");
 
-    // Create an access token which we will sign and return to the client,
-    // containing the grant we just created
-    //console.log(TWILIO_ACCOUNT_SID);
-    //console.log(TWILIO_IPM_API_KEY);
-    //console.log(TWILIO_IPM_API_SECRET);
-    //console.log(TWILIO_IPM_SERVICE_SID);
+app.get("/chatToken", function(req, res) {
+  let username = req.query.username;
+    console.log("username is: ", username);
+  let token = new AccessToken(
+      credentials.TWILIO_ACCOUNT_SID,
+      credentials.TWILIO_API_KEY,
+      credentials.TWILIO_API_SECRET,
+      {
+          identity: username,
+          ttl: 40000
+      }
+  );
 
-    var token = new AccessToken(TWILIO_ACCOUNT_SID, TWILIO_API_KEY, TWILIO_API_SECRET);
-    token.addGrant(ipmGrant);
-    token.identity = identity;
+let grant = new ChatGrant({ serviceSid: credentials.TWILIO_CHAT_SERVICE_SID });
 
-    // Serialize the token to a JWT string and include it in a JSON response
-    response.send({
-        identity: identity,
-        token: token.toJwt()
-    });
+  token.addGrant(grant);
+  const tokenJwt = token.toJwt();
+  console.log("token: " + tokenJwt);
+
+  res.send(tokenJwt);
+});
+
+app.get("/chat", function(req, res) {
+  res.sendFile("/public/chat.html", { root: __dirname });
 });
 
 
