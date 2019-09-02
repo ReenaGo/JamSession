@@ -126,11 +126,6 @@ app.get("/profilePage", (req, res, next) => {
   });
 });
 
-app.get("/chat", function(req, res) {
-  //console.log(__dirname);
-  //res.sendFile(__dirname);
-  res.render("chat");
-});
 
 // *************************************************************************************************
 // community Page functionality
