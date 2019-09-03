@@ -142,6 +142,7 @@ app.get('/community/:id', (req, res, next)=>{
   });
 });
 
+
 //**************************************************************************************************/
 // community Page create Jams
 app.post('/community/:id',(req,res,next)=>{

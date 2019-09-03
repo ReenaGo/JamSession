@@ -152,6 +152,7 @@ body {
 #profilePicture img {
     height: 200px;
     width: 200px;
+    border-radius: 50%;
 }
 
 #communitybody {
@@ -164,6 +165,8 @@ body {
 #chat {
     width: 50%;
     background-color: white;
+    box-shadow: 10px 10px 50px grey;
+
 }
 
 #jams {
@@ -173,7 +176,8 @@ body {
 
 .card1 {
     background-color: white;
-    box-shadow: 10px, 10px, 5px, grey;
+    box-shadow: 10px 10px 50px grey;
+
 
 
 }
@@ -181,8 +185,14 @@ body {
 #jamcards {
     display: flex;
     flex-direction: column;
+    align-content: center;
     width: 100%;
     padding-left: 80px;
+    padding-right: 80px;
+
+
+
+    
     
 }
 
