@@ -226,6 +226,13 @@ body {
 
 }
 
+#chat-container {
+    width: 95%;
+    background-color: white;
+    box-shadow: 10px 10px 50px grey;
+
+}
+
 #jams {
     border-style: solid;
     width: 50%;
