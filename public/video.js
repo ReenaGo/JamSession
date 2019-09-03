@@ -241,7 +241,7 @@ async function getRoomCredentials(identity) {
     if (someRoom) {
       someRoom.disconnect();
       someRoom = null;
-      window.location.replace("http://www.google.com");
+      window.location.replace("https://dcjamsession.herokuapp.com/profilePage");
     }
   });
 

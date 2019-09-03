@@ -1,101 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Sign Up!</title>
     <% include partials/head %>
-    <link rel="stylesheet" type="text/css" href="../Stylesheets/login.css">
-</head>
-<body>
+    <link rel="stylesheet" type="text/css" href="../Stylesheets/login.css" />
+  </head>
+  <body>
     <!-- Navbar -->
-    <div id="navbar1" style="background-color: rgba(220, 20, 60, 0.178); box-shadow: 10px 10px 50px grey"> 
-        <nav class="navbar navbar-expand-lg navbar-light">
-            <a class="navbar-brand" href="#">Jam Session</a>
-            <div id="navbarSupportedContent navbar1">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                            <a id="login_button" class="nav-link disabled" href="#" style="color: white">Login</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+    <div id="navbar1" style="background-color: rgba(220, 20, 60, 0.178); box-shadow: 10px 10px 50px grey">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="#">Jam Session</a>
+        <div id="navbarSupportedContent navbar1">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a id="login_button" class="nav-link disabled" href="#" style="color: white">Login</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
     </div>
     <!-- login modal -->
     <div class="bg-modal1">
-            <div class="modal-content1">
-                <br/>
-                <div class="close1">+</div>
-                <form action="/login" method="POST">
-                    <div class="form-group">
-                        <input type="email" name="emailforlogin" class="form-control" id="emailforlogin" aria-describedby="emailHelp" placeholder="Enter E-mail">
-                    </div>
-                    <div class="form-group">
-                        <input type="password" name="passwordforlogin" class="form-control" id="passwordforlogin" placeholder="Enter Password">
-                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                    </div>
-                          
-                    <button type="submit" class="btn btn-primary">Login</button>           
-                </form>
-            </div>
-        </div>
+      <div class="modal-content1">
+        <br />
+        <div class="close1">+</div>
+        <form action="/login" method="POST">
+          <div class="form-group">
+            <input
+              type="email"
+              name="emailforlogin"
+              class="form-control"
+              id="emailforlogin"
+              aria-describedby="emailHelp"
+              placeholder="Enter E-mail"
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="password"
+              name="passwordforlogin"
+              class="form-control"
+              id="passwordforlogin"
+              placeholder="Enter Password"
+            />
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+      </div>
+    </div>
     <script>
-    document.getElementById('login_button').addEventListener('click',()=>{
-        document.querySelector('.bg-modal1').style.display = 'flex';
-    })
-    
-    document.querySelector('.close1').addEventListener('click', ()=>{
-        document.querySelector('.bg-modal1').style.display = 'none';
-    })
+      document.getElementById("login_button").addEventListener("click", () => {
+        document.querySelector(".bg-modal1").style.display = "flex";
+      });
+
+      document.querySelector(".close1").addEventListener("click", () => {
+        document.querySelector(".bg-modal1").style.display = "none";
+      });
     </script>
 
     <!-- page body -->
     <div class="main" style="box-shadow: 10px 10px 50px grey">
-        <h1>Work, Play, Learn, Collaborate</h1>
-        <h2>Real-time interactive online communities </h2>
-        <div class="button" id="signup_button"><button type="button" class="btn btn-lg" data-toggle="modal" data-target="#myModal" style="background-color: rgba(249, 249, 250, 0.548); color: white">Signup</button>
-        </div>
-    </div>    
+      <h1>Work, Play, Learn, Collaborate</h1>
+      <h2>Real-time interactive online communities</h2>
+      <div class="button" id="signup_button">
+        <button
+          type="button"
+          class="btn btn-lg"
+          data-toggle="modal"
+          data-target="#myModal"
+          style="background-color: rgba(249, 249, 250, 0.548); color: white"
+        >
+          Signup
+        </button>
+      </div>
+    </div>
 
-    
     <!-- sign up Modal -->
     <div class="bg-modal">
-        <div class="modal-content">
-            <p>Join Jam Session Now!</p>
-            <div class="close">+</div>
-            <form action="/signup" method="POST">
-                <div class="form-group">
-                    <input type="text" name="firstName" class="form-control" id="firstName" aria-describedby="emailHelp" placeholder="Enter First Name">
-                </div>
-                <div class="form-group">
-                    <input type="text" name="lastName" class="form-control" id="lastName" placeholder="Enter Last Name">
-                </div>
-                <div class="form-group">
-                    <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter E-mail">
-                </div>
-                <div class="form-group">
-                    <input type="password" name="password" class="form-control" id="password" placeholder="Enter Password">
-                </div>
-                <div class="form-group">
-                    <small id="emailHelp" class="form-text text-muted">About me: </small>
-                    <textarea name='Bio1'></textarea>
-                </div>
-                <div class="form-group">
-                    <input type="text" name="imageURL" class="form-control" id="imageURL" placeholder="Enter imageURL">
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>           
-            </form>
-        </div>
+      <div class="modal-content">
+        <p>Join Jam Session Now!</p>
+        <div class="close">+</div>
+        <form action="/signup" method="POST">
+          <div class="form-group">
+            <input
+              type="text"
+              name="firstName"
+              class="form-control"
+              id="firstName"
+              aria-describedby="emailHelp"
+              placeholder="Enter First Name"
+            />
+          </div>
+          <div class="form-group">
+            <input type="text" name="lastName" class="form-control" id="lastName" placeholder="Enter Last Name" />
+          </div>
+          <div class="form-group">
+            <input
+              type="email"
+              name="email"
+              class="form-control"
+              id="email"
+              aria-describedby="emailHelp"
+              placeholder="Enter E-mail"
+            />
+          </div>
+          <div class="form-group">
+            <input type="password" name="password" class="form-control" id="password" placeholder="Enter Password" />
+          </div>
+          <div class="form-group">
+            <small id="emailHelp" class="form-text text-muted">About me: </small>
+            <textarea name="Bio1"></textarea>
+          </div>
+          <div class="form-group">
+            <input type="text" name="imageURL" class="form-control" id="imageURL" placeholder="Enter imageURL" />
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
     </div>
-<script>
-document.getElementById('signup_button').addEventListener('click',()=>{
-    document.querySelector('.bg-modal').style.display = 'flex';
-})
+    <script>
+      document.getElementById("signup_button").addEventListener("click", () => {
+        document.querySelector(".bg-modal").style.display = "flex";
+      });
 
-document.querySelector('.close').addEventListener('click', ()=>{
-    document.querySelector('.bg-modal').style.display = 'none';
-})
-</script>
-</body>
+      document.querySelector(".close").addEventListener("click", () => {
+        document.querySelector(".bg-modal").style.display = "none";
+      });
+    </script>
+  </body>
 </html>
