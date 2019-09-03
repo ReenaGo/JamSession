@@ -23,18 +23,22 @@
         </nav>
     </div>
     <div id="profileInfo">
-        <div id="profilePicture"><img src= <%=imageURL %> ></div>
-        <div><h1> <%= firstName %> <%= lastName %></h1></div>
-        <div><h2 id="aboutMe"><%=bio%></h2></div>
-        <div id="myCommunities"> 
-            <h6>Go to Community Pages</h6>
-           
+        <div id="upperprofile">
+            <div id="profilePicture"><img src= <%=imageURL %> ></div>
+            <div><h1> <%= firstName %> <%= lastName %></h1></div>
+            <div><h2 id="aboutMe"><%=bio%></h2></div>
         </div>
-         <ul>
-            <% communities.forEach(function(community){ %>
-            <li><a href="/community/<%= community.id %>"> <%= community.comName %> </a></li>
-            <% }) %>
-        </ul>
+        <div id="lowerprofile">
+            <div id="myCommunities"> 
+                <h6>Go to Community Pages</h6>
+            
+            </div>
+            <ul>
+                <% communities.forEach(function(community){ %>
+                <li id="combuttons"><button><a id="comlink" href="/community/<%= community.id %>"> <%= community.comName %> </a></button></li>
+                <% }) %>
+            </ul>
+        </div>
     </div>
 </body>
 </html> 
