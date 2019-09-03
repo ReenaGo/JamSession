@@ -100,7 +100,7 @@ body {
 .main {
     background-image: url("../Images/group-thumbs-up.jpg");
     background-repeat: repeat-x;
-    background-color: rgba(220, 20, 60, 0.527);
+    background-color: cornflowerblue;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -172,7 +172,7 @@ body {
     text-align: center;
     font-size: 30px;
     padding-top: 40px;
-    
+
 }
 
 #upperprofile {
@@ -182,7 +182,7 @@ body {
     margin-left: 40px;
     margin-right: 40px;
     margin-top: 40px;
-    background-color: rgba(220, 20, 60, 0.527)
+    background-color: cornflowerblue;
 
 
 }
@@ -195,7 +195,7 @@ body {
 
  #combuttons button{
      border-radius: 5px;
-     background-color: rgba(88, 79, 148, 0.548)
+     background-color: rgb(245, 118, 45)
 }
 
 
