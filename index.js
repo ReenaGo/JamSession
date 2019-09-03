@@ -56,6 +56,21 @@ app.use(express.static(path.join(__dirname, "assets")));
 app.set("view engine", "ejs");
 app.set("views", "app/views");
 
+
+
+
+//****************************************************************************/
+// Redirect to Signup page if don't enter path on URL
+app.get("/", function(req, res, next) {
+  res.redirect("/signup");
+});
+
+
+
+
+
+
+
 //***********************************************************************************************/
 //Signup functionality
 app.get("/signup", (req, res, next) => {
