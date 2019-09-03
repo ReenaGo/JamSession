@@ -6,7 +6,7 @@ A user can create, join, or participate in different online communities based on
 
 ## **Find your Jam!**
 
-### What technologies where used:
+### What technologies are used:
 - Node
 - Express
 - Sequelize (ORM)
