@@ -86,6 +86,8 @@ $(document).ready(function() {
       );
   
       $(".chat").append(template);
+      var body_panel = document.getElementById("body-panel");
+      body_panel.scrollTop = body_panel.scrollHeight;
     }
   
     function chatSetupCompleted() {
@@ -116,6 +118,7 @@ $(document).ready(function() {
   
         //send message
         chatChannel.sendMessage(message);
+        
       });
   
       $("#message").on("keydown", function(e) {
@@ -124,4 +127,12 @@ $(document).ready(function() {
         }
       });
     }
+
+  var body_panel = document.getElementById("body-panel");
+  console.log(body_panel)
+  console.log(body_panel.scrollTop)
+  console.log(body_panel.scrollHeight)
+  body_panel.scrollTop = body_panel.scrollHeight;
+
   });
+
