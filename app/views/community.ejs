@@ -23,16 +23,16 @@
 <body>
     <div>
          <!-- Navbar -->
-         <div id="navbar1" style="background-color: rgba(220, 20, 60, 0.178); box-shadow: 10px 10px 50px grey"> 
+         <div id="navbar1" style=" background-color: cornflowerblue;; box-shadow: 10px 10px 50px grey"> 
                 <nav class="navbar navbar-expand-lg navbar-light">
-                <a class="navbar-brand" href="#">Jam Session</a>
+                <a class="navbar-brand" href="#" style="color:white">Jam Session</a>
                 <div id="navbarSupportedContent navbar1">
                     <ul class="navbar-nav mr-auto">
                             <li class="nav-item">
-                                    <a id="login_button" class="nav-link disabled" href="/profilePage">PROFILE</a>
+                                    <a id="login_button" class="nav-link disabled" href="/profilePage" style="color:white">Profile</a>
                             </li>
                         <li class="nav-item">
-                                <a id="login_button" class="nav-link disabled" href="/signOut">Logout</a>
+                                <a id="login_button" class="nav-link disabled" href="/signOut" style="color:white">Logout</a>
                         </li>
                     </ul>
                 </div>
@@ -85,7 +85,7 @@
                             <div class="panel-footer clearfix">
                                 <input id="message" class="form-control" type="text" disabled />
                                 <span class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-xs-12" style="margin-top: 10px">
-                                <button class="btn btn-success btn-lg btn-block" id="btn-chat" style="background-color: rgba(220, 20, 60, 0.527)">Send</button>
+                                <button class="btn btn-success btn-lg btn-block" id="btn-chat" style="background-color: cornflowerblue">Send</button>
                                 </span>
                             </div>
                         </div>
@@ -104,7 +104,7 @@
         </div>
 
             <div id="Jams">
-                <div class="button" id="create_jam_button"><button type="button" class="btn btn-lg" data-toggle="modal" data-target="#myModal" style="background-color: rgba(88, 79, 148, 0.548); color: white">Create Jam</button>
+                <div class="button" id="create_jam_button"><button type="button" class="btn btn-lg" data-toggle="modal" data-target="#myModal" style="background-color: cornflowerblue; color: white">Create Jam</button>
                 </div>
                 <br>
             
@@ -149,7 +149,7 @@
                           <h5 class="card-title"><%= jam.jamName %></h5>
                           <p class="card-text"><%= jam.jamDescription %></p>
                           <p class="card-text"><%= jam.date %>, <%= jam.time %></p>
-                          <a href="/video/<%= jam.jamName %>"" class="btn" style="background-color: rgba(88, 79, 148, 0.548); color: white">Join</a>
+                          <a href="/video/<%= jam.jamName %>"" class="btn" style="background-color: cornflowerblue; color: white">Join</a>
                         </div>
                     </div>
                       <br>
