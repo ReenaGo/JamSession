@@ -82,7 +82,7 @@ app.post("/signup", (req, res, next) => {
       .create({ firstName: firstName, lastName: lastName, email: email, Image: imageURL, Bio: bio, password: hash })
       .then(user => {
         req.session.user_id = user.id;
-        req.session.firstName = firstName;
+        req.session.firstName = user.firstName;
         res.redirect("/profilePage");
       });
   });
