@@ -15,3 +15,8 @@ A user can create, join, or participate in different online communities based on
 - Twilio Programmable Video
 - Bcrypt
 
+## Authors
+
+* **Reena Gouldbourne**
+* **Alan Klein**
+* **Samhita Noone**
