@@ -39,6 +39,10 @@
     margin-bottom: 0px;
 }
 
+.panel-primary {
+  border-color: transparent;
+}
+
 .body-panel
 {
     overflow-y: scroll;
