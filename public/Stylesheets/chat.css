@@ -1,134 +1,68 @@
-@charset "utf-8";
-
-body {
-    font-size: 100%;
-		height:100vh;
-}
-
-
-input {
-	border: 0;
-	color: inherit;
-    font-family: inherit;
-    font-size: 100%;
-    line-height: normal;
+@import url("http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");
+.chat
+{
+    list-style: none;
     margin: 0;
+    padding: 0;
 }
 
-
-.chatArea {
-border: 1px  ;
-border-radius: 10px;
-margin-top: 15px;
-margin-bottom: 15px;
-height:90vh;
-position: relative;
-margin-left:  20px;
-margin-right:  20px;
-
-}
-
-.chatMessages{
-	width:100% ;
-	position:absolute;
-	top:0;
-
-
-
-
-}
-
-.scrollable {
-    height: 90%; /* or any value */
-    overflow-y: auto;
-}
-
-
-#statusMessages{
-	font-size: 9px;
-	color: #5BC0DE;
-	font-style: oblique;
-	margin-left: 10px;
-
-}
-
-.typingArea
+.chat li
 {
-	position:absolute;
-  bottom: 0;
-	width: 100% ;
-	margin-left:  5px;
-	margin-right:  5px;
-
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px dotted #B3A9A9;
 }
 
-
-
-.twilioConnect-button 
+.chat li.left .chat-body
 {
-		background: url(https://cdn.glitch.com/dc415a0e-213d-4b6e-9f5b-181c910c5294%2Ffullsizerender_11_9uM_1.ico?1490138481665);
-		width: 128px; height: 128px; display: block; margin: 0 auto;
-    opacity: 0.8;
+    margin-left: 60px;
+}
+
+.chat li.right .chat-body
+{
+    margin-right: 60px;
 }
 
 
-.twilioConnect-button:hover 
-{ 
-  background-position: 0 128px; 
+.chat li .chat-body p
+{
+    margin: 0;
+    color: #777777;
 }
 
-
-.avatar {
-  width: 40px;
+.panel .slidedown .glyphicon, .chat .glyphicon
+{
+    margin-right: 5px;
 }
 
-.bubble-left {
-    line-height: 100%;
-    display: block;
-    position: relative;
-    padding: .25em .5em;
-    background: #5BC0DE;
-    border: black solid 0;
-    -webkit-border-radius: 11px;
-    -moz-border-radius: 11px;
-    border-radius: 11px;
-    margin-bottom: 2em;
-    clear: both;
-    max-width:50%;
-		color: white;
-
+.panel {
+    margin-bottom: 0px;
 }
 
-
-.bubble-right {
-    line-height: 100%;
-    display: block;
-    position: relative;
-    padding: .25em .5em;
-    background: #5CB85C;
-    border: black solid 0;
-    -webkit-border-radius: 11px;
-    -moz-border-radius: 11px;
-    border-radius: 11px;
-    margin-bottom: 2em;
-    clear: both;
-    max-width:50%;
-		color: white;
-
-
-
-
+.panel-primary {
+  border-color: transparent;
 }
 
-.bubble-left {
-    margin-right:10%;
-		float:left;
-}
-.bubble-right {
-    margin-left:10% ;
- 		float:right;
+.body-panel
+{
+    overflow-y: scroll;
+    height: 325px;
 }
 
-.container {
-width: 1000px;  
+::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar
+{
+    width: 12px;
+    background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar-thumb
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #555;
 }
