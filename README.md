@@ -4,6 +4,8 @@ JamSession is a social platform where users with similar interests can participa
 
 A user can create, join, or participate in different online communities based on their unique interests. 
 
+**Currently working on implementing responsive UI**
+
 ## **Find your Jam!**
 
 ### What technologies are used:
