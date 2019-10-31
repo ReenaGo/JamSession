@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="../Stylesheets/chat.css">
 </head>
 <body>
-    <div>
+    <div id="bg">
          <!-- Navbar -->
          <div id="navbar1" style=" background-color: cornflowerblue;; box-shadow: 10px 10px 50px grey"> 
                 <nav class="navbar navbar-expand-lg navbar-light">
@@ -29,18 +29,22 @@
                 <div id="navbarSupportedContent navbar1">
                     <ul class="navbar-nav mr-auto">
                             <li class="nav-item">
-                                    <a id="login_button" class="nav-link disabled" href="/profilePage" style="color:white">Profile</a>
+                                    <a  class=" disabled" href="/profilePage" style="color:white; display: inline; padding-right: 10px;
+                                    ">Profile</a>
                             </li>
                         <li class="nav-item">
-                                <a id="login_button" class="nav-link disabled" href="/signOut" style="color:white">Logout</a>
+                                <a id="login_button" class=" disabled" href="/signOut" style="color:white; display: inline">Logout</a>
                         </li>
                     </ul>
                 </div>
             </nav>
         </div>
-        <div id="welcome"><H1 >Welcome to <%= comName %> Jam Session!</H1></div>
-        <H2><%= description %></H2>
+        <div id="welcome" style="background-color: "><H1 >Welcome to <%= comName %> Jam Session!</H1></div>
     <div id="communitybody">
+
+
+
+
         <div id="chat">
 
         <!-- chat section -->

@@ -10,6 +10,7 @@
   </head>
   <body>
     <!-- Navbar -->
+    <div id="bg" style="height: 100vh">
     <div id="navbar1" style="background-color: cornflowerblue; box-shadow: 10px 10px 50px grey">
       <nav class="navbar navbar-expand-lg navbar-light">
         <a class="navbar-brand" href="#" style="color: white">Jam Session</a>
@@ -29,9 +30,9 @@
         <div><h2 id="aboutMe"><%=bio%></h2></div>
       </div>
       <div id="lowerprofile">
-        <div id="myCommunities">
-          <h6>Go to Community Pages</h6>
-        </div>
+        <br/>
+        <br/>
+
         <ul>
           <% communities.forEach(function(community){ %>
           <li id="combuttons">
@@ -41,5 +42,6 @@
         </ul>
       </div>
     </div>
+  </div>
   </body>
 </html>

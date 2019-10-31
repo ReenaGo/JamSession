@@ -168,7 +168,7 @@ body {
     height: 200px;
     width: 200px;
     border-radius: 50%;
-    box-shadow: 10px 10px 50px grey;
+    /* box-shadow: 10px 10px 50px grey; */
 
 }
 
@@ -192,14 +192,15 @@ body {
 }
 
  #combuttons {
-     padding-left: 10px;
-     padding-right: 10px;
+     padding-right: 15px;
     
  }
 
  #combuttons button{
      border-radius: 5px;
-     background-color: rgb(245, 118, 45)
+     background-color: rgb(245, 118, 45);
+     border-style: none;
+
 }
 
 
@@ -207,6 +208,8 @@ body {
     display: flex;
     flex-direction: row wrap;
     list-style: none;
+    justify-content: center;
+
 
 }
 
@@ -216,21 +219,10 @@ body {
 }
 
 
-#communitybody {
-    display: flex;
-    flex-direction: row;
-    height: 100%;
-    padding-left: 80px;
-}
-
-#chat {
-    width: 50%;
-    background-color: white;
-    box-shadow: 10px 10px 50px grey;
-    height: 70vh;
 
 
-}
+
+
 
 #chat-container {
     width: 95%;
@@ -239,10 +231,7 @@ body {
 
 }
 
-#jams {
-    border-style: solid;
-    width: 50%;
-    }
+
 
 .card1 {
     background-color: white;
@@ -252,20 +241,190 @@ body {
 
 }
 
-#jamcards {
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    width: 100%;
-    padding-left: 80px;
-    padding-right: 80px;
 
-
-
-    
-    
-}
 
 #welcome {
-    padding-left: 80px;
+        margin: auto;
+        padding: 20px;
+        text-align: center;
+        color: white;
+    }
+
+
+
+
+.panel-heading {
+   background-image: none;
+   background-color: black;
 }
+
+
+.btn.btn-success {
+    background-image: none;
+}
+
+#bg {
+    background-color: #3c3d4796 
+}
+
+@media screen and (max-width: 900px) {
+    #chat {
+        width: 70%;
+        margin: auto;
+        padding-bottom: 40px
+
+    }
+    
+    .main h1 {
+        text-align: center;
+        margin-top: 200px;
+        font-size: 1.5rem;
+    }
+    
+    .main h2 {
+        text-align: center;
+        text-decoration-color: darkslategrey;
+        font-family: 'Nanum Brush Script', cursive;
+        font-size: 30px;
+        padding-left: 20px;
+        padding-right: 20px;
+    
+    }
+
+    .navbar-nav {
+        display: -ms-flexbox;
+        display: flex;
+        padding-left: 136px;
+        padding-top: 10px;
+        list-style: none;
+        flex-direction: row;
+
+    }
+
+    #communitybody {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        height: 100%;
+        justify-content: center;
+        padding:30px
+    }
+
+    .navbar-brand {
+        flex-grow: 2;
+        margin-right: 0px;
+    }
+
+    #jams {
+        border-style: solid;
+        width: 70%;
+        padding-top: 20px;
+        }
+
+        #jamcards {
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+            width: 100%;
+            padding-left: 20px;
+            padding-right: 20px;
+            margin: auto;     
+        }
+  }
+
+  .navbar-brand {
+    flex-grow: 2;
+}
+
+  @media screen and (min-width: 900px) {
+    .main h1 {
+        text-align: center;
+        margin-top: 200px;
+        font-size: 1.5rem;
+    }
+    
+    .main h2 {
+        text-align: center;
+        text-decoration-color: darkslategrey;
+        font-family: 'Nanum Brush Script', cursive;
+        font-size: 30px;
+        padding-left: 20px;
+        padding-right: 20px;
+    
+    }
+
+    .navbar-nav {
+        display: -ms-flexbox;
+        display: flex;
+        padding-left: 136px;
+        padding-top: 10px;
+        list-style: none;
+        flex-direction: row;
+
+    }
+    .navbar {
+        justify-content: flex-start;
+
+    }
+    
+    .navbar-brand {
+        flex-grow: 2;
+    }
+
+    #communitybody {
+        display: flex;
+        flex-direction: row;
+        padding-left: 30px;
+        height: 100%;
+        justify-content: center;
+    }
+
+  
+    #jamcards {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        width: 100%;
+        padding-left: 20px;
+        padding-right: 20px;
+        margin: auto;     
+    }
+
+    #jams {
+        border-style: solid;
+        width: 50%;
+        padding-top: 20px;
+        margin: auto;
+        padding-left: 10px;
+        }
+
+
+    #chat {
+        width: 50%;
+        background-color: white;
+        box-shadow: 10px 10px 50px grey;
+        height: 70vh;
+    
+    
+    }
+  
+  }
+
+  /* @media only screen and (max-width: 1700px) {
+    #jamcards {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        width: 100%;
+        padding-left: 20px;
+        padding-right: 20px;
+        margin: auto;  
+    }
+
+    #communitybody {
+        display: flex;
+        flex-direction: row;
+        height: 100%;
+        padding-left: 80px;
+    }
+  } */
