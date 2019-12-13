@@ -20,7 +20,7 @@
     "express-session": "^1.16.2",
     "install": "^0.13.0",
     "nodemon": "^1.19.1",
-    "npm": "^6.11.1",
+    "npm": "^6.13.4",
     "pg": "^7.12.1",
     "sequelize": "^5.16.0",
     "sequelize-cli": "^5.5.0",
